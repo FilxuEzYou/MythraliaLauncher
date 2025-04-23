@@ -1,0 +1,49 @@
+appId: 'mythralialauncher'
+productName: 'Mythralia Launcher'
+artifactName: '${productName}-${version}.${ext}'
+
+copyright: 'Copyright © 2025 Mythralia'
+
+asar: true
+compression: 'maximum'
+
+files:
+  - '!{dist,.gitignore,.vscode,docs,dev-app-update.yml,.nvmrc,.eslintrc.json}'
+
+extraResources:
+  - 'libraries'
+
+# Windows Configuration
+win: 
+  target: portable
+
+# Windows Installer Configuration
+nsis:
+  oneClick: false
+  perMachine: false
+  allowElevation: true
+  allowToChangeInstallationDirectory: true
+
+# macOS Configuration
+mac:
+  target:
+    - target: 'dmg'
+      arch:
+        - 'x64'
+        - 'arm64'
+  artifactName: '${productName}-setup-${version}-${arch}.${ext}'
+  category: 'public.app-category.games'
+
+# Linux Configuration
+linux: 
+  target: 'AppImage'
+  maintainer: 'Filxu'
+  vendor: 'Mythralia'
+  synopsis: 'Modded Minecraft Launcher'
+  description: 'Mythralia game launcher'
+  category: 'Game'
+
+
+directories:
+  buildResources: 'build'
+  output: 'dist'
